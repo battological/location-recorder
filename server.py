@@ -4,6 +4,7 @@
 from BaseHTTPServer import HTTPServer
 from datetime import datetime
 from pprint import pprint
+from sys import argv
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 from urlparse import parse_qs
 
@@ -31,9 +32,12 @@ class HTTPHandler(SimpleHTTPRequestHandler):
 
 if __name__ == '__main__':
 	try:
-		print('Starting server')
-		server = HTTPServer(('', 8080), HTTPHandler)
+		port = int(argv[1])
+		print('Starting server on port {}'.format(str(port)))
+		server = HTTPServer(('', port), HTTPHandler)
 		server.serve_forever()
+	except IndexError:
+		print('Forgot port!')
 	except KeyboardInterrupt:
 		print('Shutting down')
 		server.socket.close()
