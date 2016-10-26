@@ -25,11 +25,19 @@
       }
 
       function locateMe() {
+	var p = document.getElementById("coords");
+	p.style.color = 'red';
+	p.innerHTML = 'Finding location...';
+        
         function success(position) {
-	  var p = document.getElementById("coords");
+	  p.style.color = 'green';
 	  p.innerHTML = position.coords.latitude + ", " + position.coords.longitude;
 
-	  marker.setPosition({lat: position.coords.latitude, lng: position.coords.longitude});
+          var pos = {lat: position.coords.latitude, lng: position.coords.longitude};
+
+	  marker.setPosition(pos);
+	  map.setCenter(pos);
+
 	  document.getElementById('lat').value = position.coords.latitude;
 	  document.getElementById('lon').value = position.coords.longitude;
 
@@ -50,6 +58,7 @@
     h1 { font-size: 130px; margin: 0 auto; text-align: center; }
 
     #button-container { text-align: center; }
+    #coords { font-size: 30px; text-align: center; }
     #map { height: 700px; margin: 20px; }
   </style>
   <body>
