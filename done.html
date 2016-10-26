@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <script type="text/javascript" src="private.js"></script>
+  </head>
   <body>
     <div>
       <p>Recorded your location.</p>
+      <img id='map'>
   </body>
+  <script type="text/javascript">
+    var paramString = window.location.search.substr(1);
+    var params = {};
+    paramString.split('&').forEach(function(e) {
+      keyVal = e.split('=');
+      params[keyVal[0]] = keyVal[1];
+    });
+
+    var img = document.getElementById('map');
+    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" +
+      params['lat'] + "," +
+      params['lon'] + "&zoom=17&size=640x640&sensor=false&markers=" +
+      params['lat'] + "," +
+      params['lon'] + "&key=" + apiKey;
+  </script>
 </html>

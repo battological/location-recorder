@@ -21,12 +21,14 @@ class HTTPHandler(SimpleHTTPRequestHandler):
 		pprint(params)
 
 		# Record location properly
+		lat = params['lat'][0]
+		lon = params['lon'][0]
 		with open('locations.csv', 'a') as out:
-			out.write(','.join([params['lat'][0], params['lon'][0], str(datetime.now())])+'\n')
+			out.write(','.join([lat, lon, str(datetime.now())])+'\n')
 		
 		# HTTP response
 		self.send_response(201)
-		self.send_header('Refresh', '0;done.html')
+		self.send_header('Refresh', '0;done.html?lat='+lat+'&lon='+lon)
 		self.end_headers()
 
 
