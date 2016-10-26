@@ -7,7 +7,7 @@
           var img = document.getElementById("google-map");
           img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + 
             position.coords.latitude + "," + 
-            position.coords.longitude + "&zoom=13&size=300x300&sensor=false&markers=" +
+            position.coords.longitude + "&zoom=13&size=640x640&sensor=false&markers=" +
 	    position.coords.latitude + "," +
 	    position.coords.longitude;
 
@@ -28,6 +28,12 @@
       }
     </script>
   </head>
+  <style>
+    h1 { font-size: 5vw; margin: 0 auto; width: 640px; }
+    img { display: block; margin: 0 auto; }
+    button { font-size: 4vw; }
+    form { margin: 0 auto; width: 640px; }
+  </style>
   <body>
     <header>
       <h1>Car Parker</h1>
