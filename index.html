@@ -7,7 +7,7 @@
           var img = document.getElementById("google-map");
           img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + 
             position.coords.latitude + "," + 
-            position.coords.longitude + "&zoom=13&size=640x640&sensor=false&markers=" +
+            position.coords.longitude + "&zoom=17&size=640x640&sensor=false&markers=" +
 	    position.coords.latitude + "," +
 	    position.coords.longitude;
 
@@ -29,10 +29,10 @@
     </script>
   </head>
   <style>
-    h1 { font-size: 5vw; margin: 0 auto; width: 640px; }
-    img { display: block; margin: 0 auto; }
-    button { font-size: 4vw; }
+    button { font-size: 75px; }
     form { margin: 0 auto; width: 640px; }
+    h1 { font-size: 130px; margin: 0 auto; width: 640px; }
+    img { display: block; margin: 0 auto; }
   </style>
   <body>
     <header>
@@ -44,8 +44,10 @@
     <form action="" method="post">
       <input type="hidden" id="lat" name="lat">
       <input type="hidden" id="lon" name="lon">
-      <button id="locate" type="button" onclick="locateMe()">Locate</button>
-      <button id="record" type="submit" disabled>Record</button>
+      <div id="button-container">
+        <button id="locate" type="button" onclick="locateMe()">Locate</button>
+        <button id="record" type="submit" disabled>Record</button>
+      </div>
     </form>
   </body>
 </html>
