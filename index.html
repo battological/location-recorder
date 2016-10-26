@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">
+      function locateMe() {
+        function success(position) {
+          var img = document.getElementById("google-map");
+          img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + 
+            position.coords.latitude + "," + 
+            position.coords.longitude + "&zoom=13&size=300x300&sensor=false&markers=" +
+	    position.coords.latitude + "," +
+	    position.coords.longitude;
+
+	  var lat = document.getElementById("lat");
+	  lat.value = position.coords.latitude;
+
+	  var lon = document.getElementById("lon");
+	  lon.value = position.coords.longitude;
+
+	  document.getElementById("record").disabled = false;
+        }
+        
+        function error() {
+          alert('Error retrieving location!');
+        }
+        
+        navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true, timeout: 10000});
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Car Parker</h1>
+    </header>
+    <div id="map">
+      <img id="google-map">
+    </div>
+    <form action="" method="post">
+      <input type="hidden" id="lat" name="lat">
+      <input type="hidden" id="lon" name="lon">
+      <button id="locate" type="button" onclick="locateMe()">Locate</button>
+      <button id="record" type="submit" disabled>Record</button>
+    </form>
+  </body>
+</html>
